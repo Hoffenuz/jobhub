@@ -37,6 +37,20 @@ const nextConfig = {
     optimizeCss: true,
     scrollRestoration: true,
   },
+  
+  // React/Next.js strict mode
+  reactStrictMode: false,
+  
+  // For cached dependencies problem
+  onDemandEntries: {
+    // period (in ms) where the server will keep pages in the buffer
+    maxInactiveAge: 25 * 1000,
+    // number of pages that should be kept simultaneously without being disposed
+    pagesBufferLength: 2,
+  },
+  
+  // Enable the swcMinify
+  swcMinify: true,
 }
 
 export default nextConfig

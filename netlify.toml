@@ -1,16 +1,35 @@
 [build]
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish = "out"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- package.json"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
-  NODE_VERSION = "20.0.0"
-  NPM_FLAGS = "--legacy-peer-deps"
+  NODE_VERSION = "20.10.0"
+  NPM_FLAGS = "--legacy-peer-deps --force"
   NETLIFY_USE_YARN = "false"
   NETLIFY_USE_PNPM = "false"
   # Ignore TypeScript errors during build
   NEXT_IGNORE_TYPESCRIPT_ERRORS = "true"
   NEXT_IGNORE_ESLINT_ERRORS = "true"
+  CI = "false"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
@@ -27,4 +46,5 @@
   force = true
 
 [functions]
-  node_bundler = "esbuild" 
+  node_bundler = "esbuild"
+  included_files = ["src/static/**/*"] 

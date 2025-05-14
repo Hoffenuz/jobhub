@@ -8,9 +8,14 @@ echo "🚀 Starting deployment process..."
 echo "📋 Using Node.js version:"
 node -v
 
+# Clear any existing lock files
+echo "🧹 Clearing lock files for clean install..."
+rm -f package-lock.json yarn.lock pnpm-lock.yaml
+rm -rf node_modules
+
 # Install dependencies
 echo "📦 Installing dependencies..."
-npm install --legacy-peer-deps
+npm install --legacy-peer-deps --force
 
 # Build the Next.js app
 echo "🏗️ Building Next.js app..."
@@ -31,6 +36,12 @@ if [ -d "out" ]; then
   
   # Copy 404 page
   cp public/404.html out/
+  
+  # Copy netilfy.js script
+  if [ -f "public/netlify.js" ]; then
+    echo "Copying netlify.js to output directory"
+    cp public/netlify.js out/
+  fi
   
   echo "✅ Static files prepared for deployment"
 fi
