@@ -16,24 +16,29 @@ const nextConfig = {
       },
     ],
   },
-  // Netlify deploy uchun
+  // Netlify static export configuration
   output: 'export',
   distDir: 'out',
-  // API proxy konfiguratsiyasi
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://serverjobhub2.onrender.com/:path*',
-      },
-    ]
-  },
-  // Netlify'da 404 muammosini hal qilish
+  
+  // Fix 404 issues on Netlify
   trailingSlash: true,
+  
+  // Ensure all pages are generated as HTML files
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+      '/login': { page: '/login' },
+      '/register': { page: '/register' },
+      '/404': { page: '/404' },
+    }
+  },
   
   // Experimental features
   experimental: {
-    // Netlify uchun optimizatsiyalar
+    // Optimizations for Netlify
     optimizeCss: true,
     scrollRestoration: true,
   },

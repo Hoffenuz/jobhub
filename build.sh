@@ -8,10 +8,20 @@ echo "🚀 Starting deployment process..."
 echo "📋 Using Node.js version:"
 node -v
 
+# Print npm version
+echo "📋 Using npm version:"
+npm -v
+
+# Ensure pnpm is not used
+echo "⚠️ Ensuring pnpm is not used for this build..."
+export NETLIFY_USE_PNPM=false
+export USE_PNPM=false
+export USE_NPM=true
+
 # Clear any existing lock files
 echo "🧹 Clearing lock files for clean install..."
 rm -f package-lock.json yarn.lock pnpm-lock.yaml
-rm -rf node_modules
+rm -rf node_modules .pnpm-store
 
 # Install dependencies
 echo "📦 Installing dependencies..."

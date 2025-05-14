@@ -12,7 +12,9 @@
     "lint": "next lint",
     "export": "next build",
     "postbuild": "next-sitemap",
-    "netlify-build": "npm install && next build"
+    "netlify-build": "npm run pre-build && npm install --legacy-peer-deps --force && next build",
+    "pre-build": "rm -f pnpm-lock.yaml yarn.lock && rm -rf .pnpm-store",
+    "clean": "rm -rf node_modules .next out .pnpm-store pnpm-lock.yaml"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
