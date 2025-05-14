@@ -9,6 +9,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
     domains: ['serverjobhub2.onrender.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'serverjobhub2.onrender.com',
+      },
+    ],
   },
   // Netlify deploy uchun
   output: 'export',
@@ -24,6 +30,13 @@ const nextConfig = {
   },
   // Netlify'da 404 muammosini hal qilish
   trailingSlash: true,
+  
+  // Experimental features
+  experimental: {
+    // Netlify uchun optimizatsiyalar
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
 }
 
 export default nextConfig

@@ -71,14 +71,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           avatar: "/placeholder-user.jpg",
           userType: "jobseeker",
           location: {
-            country: "O'zbekiston",
-            region: "",
-            city: "",
-          },
-          createdAt: new Date(),
-          lastActive: new Date(),
-          verificationStatus: "unverified",
-          subscription: "free",
+              country: "O'zbekiston",
+              region: "",
+              city: "",
+            },
+            createdAt: new Date(),
+            lastActive: new Date(),
+            verificationStatus: "unverified",
+            subscription: "free",
         };
         
         setUser(userData);

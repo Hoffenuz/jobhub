@@ -4,6 +4,10 @@
 
 echo "🚀 Starting deployment process..."
 
+# Print Node.js version
+echo "📋 Using Node.js version:"
+node -v
+
 # Install dependencies
 echo "📦 Installing dependencies..."
 npm install --legacy-peer-deps
