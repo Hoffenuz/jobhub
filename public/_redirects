@@ -1,3 +1,11 @@
-# Netlify redirects
+# Netlify redirects for SPA
 /*    /index.html   200
-/api/*  https://serverjobhub2.onrender.com/:splat  200 
+
+# API proxy
+/api/*  https://serverjobhub2.onrender.com/:splat  200!
+
+# Next.js assets
+/_next/*  /_next/:splat  200
+
+# Static assets
+/static/*  /static/:splat  200 

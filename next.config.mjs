@@ -8,9 +8,22 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    domains: ['serverjobhub2.onrender.com'],
   },
   // Netlify deploy uchun
-  output: 'standalone',
+  output: 'export',
+  distDir: 'out',
+  // API proxy konfiguratsiyasi
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://serverjobhub2.onrender.com/:path*',
+      },
+    ]
+  },
+  // Netlify'da 404 muammosini hal qilish
+  trailingSlash: true,
 }
 
 export default nextConfig
