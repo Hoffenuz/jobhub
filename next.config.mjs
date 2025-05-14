@@ -9,6 +9,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Netlify deploy uchun
+  output: 'standalone',
 }
 
 export default nextConfig
