@@ -1,11 +1,12 @@
 [build]
-  command = "npm install && npm run build"
+  command = "bash build.sh"
   publish = "out"
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- package.json"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_VERSION = "20.10.0"
+  NPM_VERSION = "10.2.3"
   NPM_FLAGS = "--legacy-peer-deps --force"
   NETLIFY_USE_YARN = "false"
   NETLIFY_USE_PNPM = "false"
@@ -13,6 +14,10 @@
   NEXT_IGNORE_TYPESCRIPT_ERRORS = "true"
   NEXT_IGNORE_ESLINT_ERRORS = "true"
   CI = "false"
+  # Enable idiomatic version files
+  MISE_IDIOMATIC_VERSION_FILES = "1"
+  # Ensure mise doesn't warn about deprecated behavior
+  MISE_ALLOW_DEPRECATED = "0"
 
 [build.processing]
   skip_processing = false

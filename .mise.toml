@@ -1,0 +1,13 @@
+[tools]
+node = { version = "20.10.0" }
+npm = { version = "10.2.3" }
+
+[settings]
+# Enable idiomatic version files for Node.js
+idiomatic_version_files = true
+
+[env]
+NODE_ENV = "production"
+NEXT_TELEMETRY_DISABLED = "1"
+NEXT_IGNORE_TYPESCRIPT_ERRORS = "true"
+NEXT_IGNORE_ESLINT_ERRORS = "true" 
